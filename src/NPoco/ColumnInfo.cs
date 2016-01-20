@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -17,6 +18,7 @@ namespace NPoco
         public VersionColumnType VersionColumnType { get; set; }
         public bool ForceToUtc { get; set; }
         public Type ColumnType { get; set; }
+        public SqlTypeAttribute SqlType { get; set; }
 
         public static ColumnInfo FromMemberInfo(MemberInfo mi)
         {
@@ -26,6 +28,7 @@ namespace NPoco
             var colAttrs = attrs.OfType<ColumnAttribute>();
             var columnTypeAttrs = attrs.OfType<ColumnTypeAttribute>();
             var ignoreAttrs = attrs.OfType<IgnoreAttribute>();
+            var sqlTypeAttributes = attrs.OfType<SqlTypeAttribute>();
 
             // Check if declaring poco has [ExplicitColumns] attribute
             var explicitColumns = mi.DeclaringType.GetCustomAttributes(typeof(ExplicitColumnsAttribute), true).Any();
@@ -62,6 +65,11 @@ namespace NPoco
             if (columnTypeAttrs.Any())
             {
                 ci.ColumnType = columnTypeAttrs.First().Type;
+            }
+
+            if ( sqlTypeAttributes.Any() ) {
+              ci.SqlType = sqlTypeAttributes.First();
+
             }
 
             return ci;

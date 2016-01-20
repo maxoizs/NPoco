@@ -53,6 +53,7 @@
     <Compile Include="ColumnInfo.cs" />
     <Compile Include="ColumnTypeAttribute.cs" />
     <Compile Include="ComputedColumnAttribute.cs" />
+    <Compile Include="Copy of IgnoreAttribute.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="DatabaseFactory.cs" />
     <Compile Include="DatabaseFactoryConfig.cs" />
@@ -129,6 +130,7 @@
     <Compile Include="SqlBuilder.cs" />
     <Compile Include="SqlBulkCopyHelper.cs" />
     <Compile Include="SqlExtensions.cs" />
+    <Compile Include="SqlType.cs" />
     <Compile Include="StringExtensions.cs" />
     <Compile Include="TableInfo.cs" />
     <Compile Include="TableNameAttribute.cs" />
